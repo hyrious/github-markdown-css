@@ -1004,6 +1004,9 @@
     border: 1px solid #6e7681;
     box-shadow: inset 0 -1px 0 #6e7681;
   }
+  .markdown-body :checked+.radio-label {
+    border-color: rgba(56,139,253,0.4);
+  }
   .markdown-body .border {
     border: 1px solid #30363d!important;
   }
@@ -1127,6 +1130,9 @@
   .markdown-body table tr {
     background-color: #0d1117;
     border-top: 1px solid #272c32;
+  }
+  .markdown-body table tr:nth-child(2n) {
+    background-color: #161b22;
   }
   .markdown-body img {
     background-color: #0d1117;

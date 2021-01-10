@@ -49,7 +49,7 @@ string_each_index hint, /var\(--/ do |i|
   l = hint.rindex(?}, k) || -1
   klass = hint[l + 1...k].strip
   a, b = attrib.split(?:, 2).map(&:strip)
-  string_each_index src, /#{klass}\s*{/ do |q|
+  string_each_index src, /#{Regexp.escape klass}\s*{/ do |q|
     if (r = src.index ?}, q) and (t = (s = src[q..r]).index a + ?:)
       var = b.match(/var\((--[^)]*)/)[1]
       if (m = dark.match(/#{var}:\s*([^;\n]+)/))
