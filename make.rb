@@ -13,8 +13,10 @@ require 'tmpdir'
 def cached_get url
   filename = File.basename url
   path = File.join Dir.tmpdir, filename
-  puts "Cashed #{path}"
-  return File.read path if File.exist? path
+  if File.exist? path
+    puts "Cached #{path}"
+    return File.read path
+  end
   content = get url
   File.write path, content
   return content
@@ -27,8 +29,10 @@ src  = cached_get SRC
 if (i = src.index /.markdown-body\s*{/)
   j = src.index ' color: #', i
   k = src.index "\n", j
-  src = src[0..k] + "  background-color: #0d1117;\n" + src[k + 1..]
+  src = src[0..k] + "  background-color: #ffffff;\n" + src[k + 1..]
 end
+
+src.sub! '}.markdown-body', "}\n.markdown-body"
 
 # I don't want to parse CSS, let's do string manipulations.
 
