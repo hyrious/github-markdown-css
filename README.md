@@ -55,9 +55,9 @@ This script downloads Sindre's original [github-markdown.css](https://cdn.jsdeli
 
 ### Developer Tips
 
-- This script is very _cheap_, it does not require any library, however, it requires:
-  - ruby 3.
-  - a real browser (chrome), to parse the css and dom.
+- To compile make.jsx to make.js: `make make.js`.\
+  Windows users may have to use `make.exe make.js` because\
+  `.js` is executable by default with JScript (a built-in JS runtime on Windows).
 
 ## Todo
 

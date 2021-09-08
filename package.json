@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "@hyrious/github-markdown-css",
+  "version": "0.1.0",
+  "description": "github-markdown-css, with dark theme support",
+  "main": "make.js",
+  "repository": "hyrious/github-markdown-css",
+  "keywords": [
+    "markdown",
+    "css"
+  ],
+  "author": "hyrious <hyrious@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "million": "^0.5.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.12.25"
+  }
+}

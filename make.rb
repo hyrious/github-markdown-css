@@ -42,21 +42,24 @@ src.sub! '}.markdown-body', "}\n.markdown-body"
 css = github_css.map { |e| cached_get e }.join("\n")
 File.write 'temp.html', <<~HTML
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>#{css}</style>
 </head>
-<body>
+<body class="markdown-body">
+  <script type="text/javascript">var SRC = #{src.inspect};</script>
   <script src="./make.js"></script>
 </body>
 </html>
 HTML
-log "\nnow, open temp.html, click `Run` and `Save`"
+log "\nnow, open temp.html, wait and `Save`"
+exit if ARGV.include? '-q'
+
 log "\nwaiting for POST localhost:3000/submit ..."
-system "open temp.html"
+system "open temp.html" or system "start temp.html"
 
 # wait for user submit
 require 'socket'
