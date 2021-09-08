@@ -1,20 +1,23 @@
-HINT = 'https://github.com/sindresorhus/github-markdown-css/files/5792145/result.css.txt'
 SRC = 'https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.css'
 
 require 'open-uri'
+require 'tmpdir'
+require 'json'
 
-def get url
-  puts "Downloading #{url}"
-  URI.open(url) { _1.read }
+def log *args
+  $stderr.puts *args
 end
 
-require 'tmpdir'
+def get url
+  log "fetching #{url}"
+  URI.open url, &:read
+end
 
 def cached_get url
   filename = File.basename url
   path = File.join Dir.tmpdir, filename
   if File.exist? path
-    puts "Cached #{path}"
+    log "cache hit #{filename}"
     return File.read path
   end
   content = get url
@@ -22,60 +25,68 @@ def cached_get url
   return content
 end
 
-hint = cached_get HINT
-src  = cached_get SRC
+src = cached_get SRC
+github_index = cached_get 'https://github.com'
+github_css = github_index.scan /(?<=href=")\S+\.css/
 
-# dirty hack: add 'background-color' in '.markdown-body'
+# add 'background-color' in '.markdown-body'
 if (i = src.index /.markdown-body\s*{/)
   j = src.index ' color: #', i
   k = src.index "\n", j
   src = src[0..k] + "  background-color: #ffffff;\n" + src[k + 1..]
 end
-
+# ensure new line between css selectors
 src.sub! '}.markdown-body', "}\n.markdown-body"
+css = github_css.map { |e| cached_get e }.join("\n")
+File.write 'temp.html', <<~HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>#{css}</style>
+</head>
+<body>
+  <script src="./make.js"></script>
+</body>
+</html>
+HTML
+log "\nnow, open temp.html, click `Run` and `Save`"
+log "\nwaiting for POST localhost:3000/submit ..."
+system "open temp.html"
 
-# I don't want to parse CSS, let's do string manipulations.
-
-def string_each_index s, pattern
-  offset = 0
-  while (i = s.index pattern, offset)
-    yield i, s
-    offset = i + 1
-  end
-end
-
-result = {}
-dark = hint[hint.index(/prefers-color-scheme:\s*dark/)..]
-string_each_index hint, /var\(--/ do |i|
-  j = hint.rindex(?\n, i) + 1
-  attrib = hint[j...hint.index(";", j)]
-  k = hint.rindex(?{, j)
-  l = hint.rindex(?}, k) || -1
-  klass = hint[l + 1...k].strip
-  a, b = attrib.split(?:, 2).map(&:strip)
-  string_each_index src, /#{Regexp.escape klass}\s*{/ do |q|
-    if (r = src.index ?}, q) and (t = (s = src[q..r]).index a + ?:)
-      var = b.match(/var\((--[^)]*)/)[1]
-      if (m = dark.match(/#{var}:\s*([^;\n]+)/))
-        val = m[1]
-        (result[klass] ||= {})[a] = b.sub("var(#{var})", val)
-      end
-    end
-  end
-end
-
-require 'stringio'
-
-io = StringIO.new
-io.puts src
-io.puts
-io.puts "@media (prefers-color-scheme: dark) {"
-result.each { |klass, kv|
-  io.puts "  #{klass.split("\n").join("\n  ")} {"
-  kv.each { |k, v|
-    io.puts "    #{k}: #{v};"
-  }
-  io.puts "  }"
+require 'socket'
+server = TCPServer.new 'localhost', 3000
+response_send = -> session, code, body {
+  session.print "HTTP/1.1 #{code}\r\nContent-Type: text/plain\r\nAccess-Control-Allow-Origin: *\r\n\r\n#{body}\r\n"
+  session.close
 }
-io.puts "}"
-File.write 'github-markdown.css', io.string
+info = nil
+
+while (session = server.accept)
+  request = session.readpartial 2048
+  method, path, version = request.lines[0].split
+  headers = {}
+  nlines = 1
+  request.lines[1..].each do |line|
+    break if line == "\r\n"
+    key, value = line.split /: ?/, 2
+    headers[key] = value.chomp
+    nlines += 1
+  end
+  body = request.lines[nlines + 1..].join
+  len = headers["Content-Length"].to_i
+  if body.size > len
+    body += session.readpartial body.size - len
+  end
+
+  if method == 'POST' && path == '/submit'
+    info = JSON.parse body
+    response_send[session, 200, "ok"]
+    break
+  else
+    response_send[session, 404, "Not Found"]
+    next
+  end
+end
