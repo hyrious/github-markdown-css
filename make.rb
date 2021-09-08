@@ -37,6 +37,8 @@ if (i = src.index /.markdown-body\s*{/)
 end
 # ensure new line between css selectors
 src.sub! '}.markdown-body', "}\n.markdown-body"
+
+# make temp.html
 css = github_css.map { |e| cached_get e }.join("\n")
 File.write 'temp.html', <<~HTML
 <!DOCTYPE html>
@@ -56,6 +58,7 @@ log "\nnow, open temp.html, click `Run` and `Save`"
 log "\nwaiting for POST localhost:3000/submit ..."
 system "open temp.html"
 
+# wait for user submit
 require 'socket'
 server = TCPServer.new 'localhost', 3000
 response_send = -> session, code, body {
@@ -90,3 +93,5 @@ while (session = server.accept)
     next
   end
 end
+
+# TODO: do something with info
