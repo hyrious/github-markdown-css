@@ -55,9 +55,10 @@ This script downloads Sindre's original [github-markdown.css](https://cdn.jsdeli
 
 ### Developer Tips
 
-- To compile make.jsx to make.js: `make make.js`.\
-  Windows users may have to use `make.exe make.js` because\
-  `.js` is executable by default with JScript (a built-in JS runtime on Windows).
+```bash
+npm install
+npm test
+```
 
 ## Todo
 

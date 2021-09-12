@@ -3,7 +3,8 @@
   "name": "@hyrious/github-markdown-css",
   "version": "0.1.0",
   "description": "github-markdown-css, with dark theme support",
-  "main": "make.js",
+  "type": "module",
+  "main": "index.js",
   "repository": "hyrious/github-markdown-css",
   "keywords": [
     "markdown",
@@ -11,9 +12,8 @@
   ],
   "author": "hyrious <hyrious@outlook.com>",
   "license": "MIT",
-  "dependencies": {
-    "million": "^0.5.1",
-    "postcss-selector-parser": "^6.0.6"
+  "scripts": {
+    "test": "node index.js"
   },
   "devDependencies": {
     "esbuild": "^0.12.26"

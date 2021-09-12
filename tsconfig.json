@@ -1,0 +1,9 @@
+{
+    // there's no typescript in this repo, the tsconfig is
+    // only required for esbuild to resolve files
+    "compilerOptions": {
+        "paths": {
+            "react": ["react-shim.js"]
+        }
+    }
+}
