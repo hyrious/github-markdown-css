@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "esbuild": "^0.12.26"
+  },
+  "dependencies": {
+    "socks-proxy-agent": "^6.0.0"
   }
 }
