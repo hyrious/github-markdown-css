@@ -3,7 +3,8 @@
     // only required for esbuild to resolve files
     "compilerOptions": {
         "paths": {
-            "react": ["react-shim.js"]
+            "react": ["./shims/react.js"],
+            "react-dom": ["./shims/react-dom.js"]
         }
     }
 }
