@@ -38,6 +38,11 @@ const getCSS = (async () => {
   writeFileSync('dist/all.css', all)
 })();
 
+const getOri = (async () => {
+  const body = await cachedGet('https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.css')
+  writeFileSync('dist/ori.css', body)
+})();
+
 const buildJSX = esbuild.build({
   entryPoints: ["main.jsx"],
   bundle: true,
@@ -48,6 +53,7 @@ const buildJSX = esbuild.build({
 })
 
 await getCSS
+await getOri
 await buildJSX
 
 console.log("\ngenerated dist")
