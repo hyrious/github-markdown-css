@@ -6,8 +6,8 @@ import { get } from "https"
 import createSocksProxyAgent from 'socks-proxy-agent'
 import esbuild from "esbuild"
 
-const log = () => {}
-const agent = createSocksProxyAgent('socks://localhost:10808')
+const log = console.log
+const agent = createSocksProxyAgent('socks://localhost:7890')
 
 const cachedGet = (url) => {
   const filename = basename(url)
@@ -18,7 +18,7 @@ const cachedGet = (url) => {
   }
   log('fetching', url)
   return new Promise((resolve, rej) => {
-    get("https://github.com", { agent }, (res) => {
+    get(url, { agent }, (res) => {
       let c = []
       res.on('data', d => c.push(d))
       res.on('end', () => {
@@ -49,3 +49,7 @@ const buildJSX = esbuild.build({
 
 await getCSS
 await buildJSX
+
+console.log("\ngenerated dist")
+console.log("now start a local http server and click `run`")
+console.log("for example: npx sirv-cli -D")
