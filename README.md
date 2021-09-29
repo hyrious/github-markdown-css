@@ -1,6 +1,6 @@
 # github-markdown-css
 
-> [sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css), with dark theme support
+> [sindresorhus/github-markdown-css][1], with dark theme support
 
 Related issue: [sindresorhus/github-markdown-css#76](https://github.com/sindresorhus/github-markdown-css/issues/76).
 
@@ -8,14 +8,14 @@ Related issue: [sindresorhus/github-markdown-css#76](https://github.com/sindreso
 
 CDN links: (_auto_ means it uses `@media (prefers-color-scheme: dark)`)
 
-- only light &rarr; [original repo](https://github.com/sindresorhus/github-markdown-css)
-- [**auto light/dark**](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown.css): _you probably want this_
-- [auto light/dark_dimmed](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dimmed.css)
-- [auto light/dark_high_contrast](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--high_contrast.css)
-- [only dark](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dark-only.css)
-- [only dark_dimmed](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dimmed-only.css)
-- [only dark_high_contrast](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--high_contrast-only.css)
-- [full control](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--full.css)\
+- only light &rarr; [original repo][1]
+- [**auto light/dark**][2]: _you probably want this_
+- [auto light/dark_dimmed][3]
+- [auto light/dark_high_contrast][4]
+- [only dark][5]
+- [only dark_dimmed][6]
+- [only dark_high_contrast][7]
+- [full control][8]\
   you can control the theme with the same attributes as GitHub uses, like `[data-color-mode]`,
   below is a simple script to help you toggle themes.
 
@@ -68,3 +68,12 @@ All future works (like get rid of depending on the original css) go to\
 ## License
 
 MIT @ [hyrious](https://github.com/hyrious)
+
+[1]: https://github.com/sindresorhus/github-markdown-css
+[2]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown.css
+[3]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dimmed.css
+[4]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--high_contrast.css
+[5]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dark-only.css
+[6]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--dimmed-only.css
+[7]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--high_contrast-only.css
+[8]: https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown--full.css
