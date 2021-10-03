@@ -131,7 +131,7 @@ markdown_body = markdown_body.flat_map { |s|
 
 require 'stringio'
 io = StringIO.new
-io.puts theme
+# io.puts theme
 io.puts '.markdown-body{' + root.join(';') + '}'
 io.puts File.read 'prefix.css'
 io.puts markdown_body
@@ -139,14 +139,18 @@ raw = io.string
 
 Dir.mkdir 'dist' unless Dir.exist? 'dist'
 test_html = cached_get 'https://sindresorhus.com/github-markdown-css/'
+test_html[/<head>/] = '<head><meta name="color-scheme" content="dark">'
+test_html[/<body>/] = '<body class="markdown-body">'
 test_html[/<a class="github-fork-ribbon".+/] = ''
 File.write 'dist/index.html', test_html
 
 light = colors[0][1].reverse
+dark = colors.find { |(name, _)| name == 'dark' }[1].reverse
+light = dark + light
 lighted = raw.gsub(/var\((.+?)\)/) { |t|
   m = t.match /var\((.+?)\)/
   var = m[1]
-  _, value = light.find { |(name, value)| name == var }
+  _, value = light.find { |(name, _)| name == var }
   next value
 }
 File.write 'dist/github-markdown.css', lighted
