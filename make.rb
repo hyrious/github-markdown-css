@@ -4,7 +4,7 @@ require 'date'
 
 def get url
   puts "↓ #{url}"
-  URI.open url, proxy: ENV['CI'] ? '' : 'http://localhost:10809', &:read
+  URI.open url, &:read
 end
 
 def cached_get url
