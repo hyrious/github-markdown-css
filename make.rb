@@ -1,81 +1,156 @@
-HINT = 'https://github.com/sindresorhus/github-markdown-css/files/5792145/result.css.txt'
-SRC = 'https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.css'
-
 require 'open-uri'
+require 'tmpdir'
+require 'date'
 
 def get url
-  puts "Downloading #{url}"
-  URI.open(url) { _1.read }
+  puts "↓ #{url}"
+  URI.open url, proxy: ENV['CI'] ? '' : 'http://localhost:10809', &:read
 end
-
-require 'tmpdir'
 
 def cached_get url
   filename = File.basename url
-  path = File.join Dir.tmpdir, filename
-  if File.exist? path
-    puts "Cached #{path}"
-    return File.read path
-  end
-  content = get url
-  File.write path, content
+  tmpfile  = File.join Dir.tmpdir, filename
+  cached   = File.exist?(tmpfile) and (Date.today - File.mtime(tmpfile).to_date).to_i < 7
+  return File.read tmpfile if cached
+  content  = get url
+  File.write tmpfile, content
   return content
 end
 
-hint = cached_get HINT
-src  = cached_get SRC
-
-# dirty hack: add 'background-color' in '.markdown-body'
-if (i = src.index /.markdown-body\s*{/)
-  j = src.index ' color: #', i
-  k = src.index "\n", j
-  src = src[0..k] + "  background-color: #ffffff;\n" + src[k + 1..]
-end
-
-src.sub! '}.markdown-body', "}\n.markdown-body"
-
-# I don't want to parse CSS, let's do string manipulations.
-
-def string_each_index s, pattern
-  offset = 0
-  while (i = s.index pattern, offset)
-    yield i, s
-    offset = i + 1
+def each_rule css
+  # remove comments
+  css.gsub! /\/\*.+?\*\//m, ''
+  # scan based on { and }
+  i = j = k = 0
+  loop do
+    j = css.index ?{, i
+    k = css.index ?}, i
+    break unless j and k
+    selector = css[i...j].strip
+    if selector.start_with? '@'
+      k = j + 1
+      t = 0
+      while t >= 0
+        case css[(k += 1) - 1]
+        when ?{ then t += 1
+        when ?} then t -= 1
+        end
+      end
+      i = k
+      # skip @media @keyframes
+      next
+    end
+    body = css[j + 1...k]
+    yield selector, body
+    i = k + 1
   end
 end
 
-result = {}
-dark = hint[hint.index(/prefers-color-scheme:\s*dark/)..]
-string_each_index hint, /var\(--/ do |i|
-  j = hint.rindex(?\n, i) + 1
-  attrib = hint[j...hint.index(";", j)]
-  k = hint.rindex(?{, j)
-  l = hint.rindex(?}, k) || -1
-  klass = hint[l + 1...k].strip
-  a, b = attrib.split(?:, 2).map(&:strip)
-  string_each_index src, /#{Regexp.escape klass}\s*{/ do |q|
-    if (r = src.index ?}, q) and (t = (s = src[q..r]).index a + ?:)
-      var = b.match(/var\((--[^)]*)/)[1]
-      if (m = dark.match(/#{var}:\s*([^;\n]+)/))
-        val = m[1]
-        (result[klass] ||= {})[a] = b.sub("var(#{var})", val)
+# https://github.com/gjtorikian/html-pipeline/blob/main/lib/html/pipeline/sanitization_filter.rb
+ALLOWLIST = %w(
+  h1 h2 h3 h4 h5 h6 h7 h8 br b i strong em a pre code img tt
+  div ins del sup sub p ol ul table thead tbody tfoot blockquote
+  dl dt dd kbd q samp var hr ruby rt rp li tr td th s strike summary
+  details caption figure figcaption
+  abbr bdo cite dfn mark small span time wbr
+  body html g-emoji
+)
+
+ALLOWCLASS = %w(
+  .g-emoji
+  .radio-label-theme-discs
+)
+
+def scan_markdown css
+  ret = []
+  each_rule css do |selector, body|
+    # always include .markdown-body and syntax highlights
+    if selector.start_with? '.markdown-body' or body.include? 'prettylights'
+      next if selector.include? '.zeroclipboard-container'
+      ret << "#{selector}{#{body}}"
+    elsif selector.start_with? /[:\[\w]/
+      # top level rules applied to :root, a, ...
+      # ignore unknown tag|class names
+      if (tag = selector[/^\w[-\w]*/])
+        next unless ALLOWLIST.include? tag
       end
+      if (klass = selector[/\.[-\w]+/])
+        next unless ALLOWCLASS.include? klass
+      end
+      # manually ignore this rule
+      next if selector == '[hidden][hidden]'
+      ret << "#{selector}{#{body}}"
     end
   end
+  ret
 end
 
-require 'stringio'
-
-io = StringIO.new
-io.puts src
-io.puts
-io.puts "@media (prefers-color-scheme: dark) {"
-result.each { |klass, kv|
-  io.puts "  #{klass.split("\n").join("\n  ")} {"
-  kv.each { |k, v|
-    io.puts "    #{k}: #{v};"
-  }
-  io.puts "  }"
+html = cached_get 'https://github.com'
+urls = html.scan(/href="(.+?\.css)/).flatten.uniq
+colors = []
+markdown_body = []
+urls.each { |url|
+  css = cached_get url
+  if (m = url.match /((?:light|dark)\w*)/)
+    colors << [m[1], css.scan(/(--[-\w]+):([^;}]+)[;}]/)]
+  else
+    markdown_body.push *scan_markdown(css)
+  end
 }
-io.puts "}"
-File.write 'github-markdown.css', io.string
+# remove duplicates, but keep order
+markdown_body = markdown_body.reverse.uniq.reverse
+# remove unused variables
+variables = markdown_body.flat_map { |s| s.scan(/var\((.+?)\)/).flatten }
+markdown_body.each { |s|
+  next if s.include? 'prettylights'
+  s.gsub!(/(--[-\w]+):([^;}]+)([;}])/) { |t|
+    m = t.match /(--[-\w]+):([^;}]+)([;}])/
+    variables.include?(m[1]) ? t : m[3] == '}' ? '}' : ''
+  }
+}
+# remove empty rules
+markdown_body.reject! { |s| s.end_with? '{}' }
+# merge root rules
+theme, root = [], []
+markdown_body = markdown_body.flat_map { |s|
+  if s.include? 'color-scheme:'
+    theme << s
+    next []
+  end
+  selectors = s[...s.index('{')].split(?,).map { |t|
+    next '.markdown-body' if %w( :root html body ).include? t
+    t.start_with?('.markdown-body') ? t : ".markdown-body #{t}"
+  }
+  if selectors.size == 1 and selectors[0] == '.markdown-body'
+    root << s[s.index('{') + 1..-2]
+    next []
+  else
+    [selectors.join(?,) + s[s.index('{')..]]
+  end
+}
+
+require 'stringio'
+io = StringIO.new
+# io.puts theme
+io.puts '.markdown-body{' + root.join(';') + '}'
+io.puts File.read 'prefix.css'
+io.puts markdown_body
+raw = io.string
+
+Dir.mkdir 'dist' unless Dir.exist? 'dist'
+test_html = cached_get 'https://sindresorhus.com/github-markdown-css/'
+test_html[/<head>/] = '<head><meta name="color-scheme" content="dark">'
+test_html[/<body>/] = '<body class="markdown-body">'
+test_html[/<a class="github-fork-ribbon".+/] = ''
+File.write 'dist/index.html', test_html
+
+light = colors[0][1].reverse
+dark = colors.find { |(name, _)| name == 'dark' }[1].reverse
+light = dark + light
+lighted = raw.gsub(/var\((.+?)\)/) { |t|
+  m = t.match /var\((.+?)\)/
+  var = m[1]
+  _, value = light.find { |(name, _)| name == var }
+  next value
+}
+File.write 'dist/github-markdown.css', lighted
