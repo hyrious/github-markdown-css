@@ -4,14 +4,14 @@ require 'date'
 
 def get url
   puts "↓ #{url}"
-  URI.open url, proxy: 'http://localhost:10809', &:read
+  URI.open url, proxy: ENV['CI'] ? '' : 'http://localhost:10809', &:read
 end
 
 def cached_get url
   filename = File.basename url
   tmpfile  = File.join Dir.tmpdir, filename
-  cached   = (Date.today - File.mtime(tmpfile).to_date).to_i < 7
-  return File.read tmpfile if File.exist? tmpfile and cached
+  cached   = File.exist?(tmpfile) and (Date.today - File.mtime(tmpfile).to_date).to_i < 7
+  return File.read tmpfile if cached
   content  = get url
   File.write tmpfile, content
   return content
@@ -68,7 +68,7 @@ def scan_markdown css
     if selector.start_with? '.markdown-body' or body.include? 'prettylights'
       next if selector.include? '.zeroclipboard-container'
       ret << "#{selector}{#{body}}"
-    elsif selector.start_with? /[:\w]/
+    elsif selector.start_with? /[:\[\w]/
       # top level rules applied to :root, a, ...
       # ignore unknown tag|class names
       if (tag = selector[/^\w[-\w]*/])
@@ -77,6 +77,8 @@ def scan_markdown css
       if (klass = selector[/\.[-\w]+/])
         next unless ALLOWCLASS.include? klass
       end
+      # manually ignore this rule
+      next if selector == '[hidden][hidden]'
       ret << "#{selector}{#{body}}"
     end
   end
@@ -108,4 +110,43 @@ markdown_body.each { |s|
 }
 # remove empty rules
 markdown_body.reject! { |s| s.end_with? '{}' }
-puts markdown_body
+# merge root rules
+theme, root = [], []
+markdown_body = markdown_body.flat_map { |s|
+  if s.include? 'color-scheme:'
+    theme << s
+    next []
+  end
+  selectors = s[...s.index('{')].split(?,).map { |t|
+    next '.markdown-body' if %w( :root html body ).include? t
+    t.start_with?('.markdown-body') ? t : ".markdown-body #{t}"
+  }
+  if selectors.size == 1 and selectors[0] == '.markdown-body'
+    root << s[s.index('{') + 1..-2]
+    next []
+  else
+    [selectors.join(?,) + s[s.index('{')..]]
+  end
+}
+
+require 'stringio'
+io = StringIO.new
+io.puts theme
+io.puts '.markdown-body{' + root.join(';') + '}'
+io.puts File.read 'prefix.css'
+io.puts markdown_body
+raw = io.string
+
+Dir.mkdir 'dist' unless Dir.exist? 'dist'
+test_html = cached_get 'https://sindresorhus.com/github-markdown-css/'
+test_html[/<a class="github-fork-ribbon".+/] = ''
+File.write 'dist/index.html', test_html
+
+light = colors[0][1].reverse
+lighted = raw.gsub(/var\((.+?)\)/) { |t|
+  m = t.match /var\((.+?)\)/
+  var = m[1]
+  _, value = light.find { |(name, value)| name == var }
+  next value
+}
+File.write 'dist/github-markdown.css', lighted
