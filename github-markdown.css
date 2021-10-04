@@ -176,3 +176,6 @@
 .markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}
 .markdown-body [hidden]{display:none !important}
 .markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}
+.markdown-body :focus+.radio-label-theme-discs{border-color:var(--color-accent-emphasis);outline:none;box-shadow:var(--color-primer-shadow-focus)}
+.markdown-body :checked+.radio-label-theme-discs{border-color:var(--color-accent-emphasis)}
+.markdown-body :checked+.radio-label-theme-discs,.markdown-body .radio-label-theme-discs:hover{padding:8px}
