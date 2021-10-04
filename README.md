@@ -10,7 +10,7 @@ Checkout latest works &rarr; https://hyrious.me/github-markdown-css/
 
 - https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown.css \
   Based on Sindre's original css, with dark theme in `@media (prefers-color-scheme: dark)`.
-- Comming soon.
+- Checkout `gh-pages` branch.
 
 ## How it works
 
