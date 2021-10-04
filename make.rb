@@ -177,6 +177,7 @@ File.write 'dist/index.html', test_html
 
 colors.each { |name, vars|
   vars.select! { |(var, value)| variables.include? var }
+  vars.uniq! { |(var, value)| var }
   body = vars.map { |(var, value)| "#{var}:#{value}" }.join(';')
   File.write "dist/#{name}.css", ".#{name}{#{body}}\n"
 }
