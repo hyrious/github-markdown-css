@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head><meta name="color-scheme" content="dark">
+<head><meta name="color-scheme" content="light dark">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 <title>GitHub Markdown CSS demo</title>
@@ -21,7 +21,7 @@
 			}
 		</style>
 </head>
-<body class="markdown-body">
+<body class="markdown-body light">
 <article class="markdown-body">
 <h1><a id="user-content-github-markdown-css-demo" class="anchor" href="#github-markdown-css-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitHub Markdown CSS demo</h1>
 <p><a name="user-content-headers"></a></p><a name="user-content-headers">
@@ -1279,7 +1279,7 @@ use regular HTML <code>&lt;img&gt;</code> tags.</p>
 Markdown will also perform a bit of randomized decimal and hex
 entity-encoding to help obscure your address from address-harvesting
 spambots. For example, Markdown will turn this:</p>
-<pre><code>&lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c3d38382e392f2f1c39243d312c3039723f3331">[email&#160;protected]</a>&gt;
+<pre><code>&lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9a8adadbbacbaba89acb1a8a4b9a5ace7aaa6a4">[email&#160;protected]</a>&gt;
 </code></pre>
 <p>into something like this:</p>
 <pre><code>&lt;a href="&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;
@@ -1287,7 +1287,7 @@ spambots. For example, Markdown will turn this:</p>
 &amp;#109;"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 </code></pre>
-<p>which will render in a browser as a clickable link to "<a href="/cdn-cgi/l/email-protection#c2a3a6a6b0a7b1b182a7baa3afb2aea7eca1adaf"><span class="__cf_email__" data-cfemail="026366667067717142677a636f726e672c616d6f">[email&#160;protected]</span></a>".</p>
+<p>which will render in a browser as a clickable link to "<a href="/cdn-cgi/l/email-protection#0e6f6a6a7c6b7d7d4e6b766f637e626b206d6163"><span class="__cf_email__" data-cfemail="7b1a1f1f091e08083b1e031a160b171e55181416">[email&#160;protected]</span></a>".</p>
 <p>(This sort of entity-encoding trick will indeed fool many, if not
 most, address-harvesting bots, but it definitely won't fool all of
 them. It's better than nothing, but an address published in this way
@@ -1377,5 +1377,37 @@ gulp.task(<span class="pl-s"><span class="pl-pds">'</span>default<span class="pl
 });</pre></div>
 </article>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  var lastColor = 'light'
+  function changeColor(select) {
+    var newColor = select.value
+    document.body.classList.replace(lastColor, newColor)
+    lastColor = newColor
+  }
+</script>
+<select style="position: fixed; top: 1em; right: 1em; font-size: 16px;"
+        onchange="changeColor(this)">
+<option value="light">light</option>
+<option value="dark">dark</option>
+<option value="dark_dimmed">dark_dimmed</option>
+<option value="dark_high_contrast">dark_high_contrast</option>
+<option value="dark_protanopia">dark_protanopia</option>
+<option value="light_protanopia">light_protanopia</option>
+</select>
+<link rel="stylesheet" href="./light.css">
+<link rel="stylesheet" href="./dark.css">
+<link rel="stylesheet" href="./dark_dimmed.css">
+<link rel="stylesheet" href="./dark_high_contrast.css">
+<link rel="stylesheet" href="./dark_protanopia.css">
+<link rel="stylesheet" href="./light_protanopia.css">
+<style>
+.light{color-scheme:light}
+.dark{color-scheme:dark}
+.dark_dimmed{color-scheme:dark}
+.dark_high_contrast{color-scheme:dark}
+.dark_protanopia{color-scheme:dark}
+.light_protanopia{color-scheme:light}
+</style>
+</body>
+
 </html>
