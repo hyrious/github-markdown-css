@@ -2,8 +2,8 @@ a = `npx github-markdown-css --list`.split
 
 u = 'https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist'
 
-puts "|" + ' <!-- --> |' * a.size
-puts '|' + ' - |' * a.size
+puts "| <!-- --> |" + ' <!-- --> |' * a.size
+puts '| - |' + ' - |' * a.size
 puts '| Dark\Light |' + a.map { |e| " **#{e}** |" }.join
 a.each_with_index { |e, i|
   print "| **#{e}** |"

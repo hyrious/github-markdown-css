@@ -8,8 +8,8 @@
 
 All css files are minified using esbuild.
 
-| <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
-| - | - | - | - | - | - |
+| <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| - | - | - | - | - | - | - |
 | Dark\Light | **light** | **dark** | **dark_dimmed** | **dark_high_contrast** | **dark_colorblind** | **light_colorblind** |
 | **light** | [light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light.css) | [dark-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-light.css) | [dark_dimmed-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-light.css) | [dark_high_contrast-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-light.css) | [dark_colorblind-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-light.css) | [light_colorblind-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-light.css) |
 | **dark** | [light-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-dark.css) | [dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark.css) | [dark_dimmed-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-dark.css) | [dark_high_contrast-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-dark.css) | [dark_colorblind-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-dark.css) | [light_colorblind-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-dark.css) |
