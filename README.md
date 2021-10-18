@@ -1,23 +1,22 @@
+## [`sindresorhus/github-markdown-css`][1] has dark theme now!
+
 # github-markdown-css
 
-> [sindresorhus/github-markdown-css][1], with dark theme support
-
-Related issue: [sindresorhus/github-markdown-css#76](https://github.com/sindresorhus/github-markdown-css/issues/76).
-
-Checkout latest works &rarr; https://hyrious.me/github-markdown-css/
+> [`sindresorhus/github-markdown-css`][1], with all variants.
 
 ## Usage
 
-- https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/github-markdown.css \
-  Based on Sindre's original css, with dark theme in `@media (prefers-color-scheme: dark)`.
-- Checkout `gh-pages` branch.
+All css files are minified using esbuild.
 
-## How it works
-
-1. Fetch https://github.com, scan css files.
-2. Scan css variables in color themes.
-3. Scan `.markdown-body` rules in other files.
-   Also scan [allowed tags](https://gist.github.com/seanh/13a93686bf4c2cb16e658b3cf96807f2).
+| <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| - | - | - | - | - | - |
+| Dark\Light | **light** | **dark** | **dark_dimmed** | **dark_high_contrast** | **dark_colorblind** | **light_colorblind** |
+| **light** | [light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light.css) | [dark-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-light.css) | [dark_dimmed-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-light.css) | [dark_high_contrast-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-light.css) | [dark_colorblind-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-light.css) | [light_colorblind-light.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-light.css) |
+| **dark** | [light-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-dark.css) | [dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark.css) | [dark_dimmed-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-dark.css) | [dark_high_contrast-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-dark.css) | [dark_colorblind-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-dark.css) | [light_colorblind-dark.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-dark.css) |
+| **dark_dimmed** | [light-dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-dark_dimmed.css) | [dark-dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-dark_dimmed.css) | [dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed.css) | [dark_high_contrast-dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-dark_dimmed.css) | [dark_colorblind-dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-dark_dimmed.css) | [light_colorblind-dark_dimmed.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-dark_dimmed.css) |
+| **dark_high_contrast** | [light-dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-dark_high_contrast.css) | [dark-dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-dark_high_contrast.css) | [dark_dimmed-dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-dark_high_contrast.css) | [dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast.css) | [dark_colorblind-dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-dark_high_contrast.css) | [light_colorblind-dark_high_contrast.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-dark_high_contrast.css) |
+| **dark_colorblind** | [light-dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-dark_colorblind.css) | [dark-dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-dark_colorblind.css) | [dark_dimmed-dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-dark_colorblind.css) | [dark_high_contrast-dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-dark_colorblind.css) | [dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind.css) | [light_colorblind-dark_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind-dark_colorblind.css) |
+| **light_colorblind** | [light-light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light-light_colorblind.css) | [dark-light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark-light_colorblind.css) | [dark_dimmed-light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_dimmed-light_colorblind.css) | [dark_high_contrast-light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_high_contrast-light_colorblind.css) | [dark_colorblind-light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/dark_colorblind-light_colorblind.css) | [light_colorblind.css](https://cdn.jsdelivr.net/gh/hyrious/github-markdown-css@main/dist/light_colorblind.css) |
 
 ## License
 
