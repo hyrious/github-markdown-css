@@ -2,12 +2,11 @@
   "private": true,
   "type": "module",
   "name": "@hyrious/github-markdown-css",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "scripts": {
     "make": "node make.js"
   },
   "devDependencies": {
-    "esbuild": "^0.13.8",
-    "generate-github-markdown-css": "^5.0.0"
+    "generate-github-markdown-css": "^5.0.1"
   }
 }

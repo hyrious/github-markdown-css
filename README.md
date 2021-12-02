@@ -6,8 +6,6 @@
 
 ## Usage
 
-All css files are minified using esbuild.
-
 | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
 | - | - | - | - | - | - | - |
 | Dark\Light | **light** | **dark** | **dark_dimmed** | **dark_high_contrast** | **dark_colorblind** | **light_colorblind** |
