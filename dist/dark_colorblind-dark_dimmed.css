@@ -53,26 +53,26 @@
     --color-prettylights-syntax-constant: #79c0ff;
     --color-prettylights-syntax-entity: #d2a8ff;
     --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
-    --color-prettylights-syntax-entity-tag: #83d4ff;
-    --color-prettylights-syntax-keyword: #d69a00;
+    --color-prettylights-syntax-entity-tag: #a5d6ff;
+    --color-prettylights-syntax-keyword: #ec8e2c;
     --color-prettylights-syntax-string: #a5d6ff;
-    --color-prettylights-syntax-variable: #ffa657;
-    --color-prettylights-syntax-brackethighlighter-unmatched: #c38000;
+    --color-prettylights-syntax-variable: #fdac54;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #d47616;
     --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
-    --color-prettylights-syntax-invalid-illegal-bg: #633e00;
+    --color-prettylights-syntax-invalid-illegal-bg: #6c3906;
     --color-prettylights-syntax-carriage-return-text: #f0f6fc;
-    --color-prettylights-syntax-carriage-return-bg: #865401;
-    --color-prettylights-syntax-string-regexp: #83d4ff;
+    --color-prettylights-syntax-carriage-return-bg: #914d04;
+    --color-prettylights-syntax-string-regexp: #a5d6ff;
     --color-prettylights-syntax-markup-list: #f2cc60;
     --color-prettylights-syntax-markup-heading: #1f6feb;
     --color-prettylights-syntax-markup-italic: #c9d1d9;
     --color-prettylights-syntax-markup-bold: #c9d1d9;
-    --color-prettylights-syntax-markup-deleted-text: #f0ec59;
-    --color-prettylights-syntax-markup-deleted-bg: #452f00;
-    --color-prettylights-syntax-markup-inserted-text: #a0e8ff;
-    --color-prettylights-syntax-markup-inserted-bg: #0a2861;
-    --color-prettylights-syntax-markup-changed-text: #ffdfb6;
-    --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+    --color-prettylights-syntax-markup-deleted-text: #ffe2bb;
+    --color-prettylights-syntax-markup-deleted-bg: #4e2906;
+    --color-prettylights-syntax-markup-inserted-text: #cae8ff;
+    --color-prettylights-syntax-markup-inserted-bg: #0c2d6b;
+    --color-prettylights-syntax-markup-changed-text: #ffe2bb;
+    --color-prettylights-syntax-markup-changed-bg: #4e2906;
     --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
     --color-prettylights-syntax-markup-ignored-bg: #1158c7;
     --color-prettylights-syntax-meta-diff-range: #d2a8ff;
@@ -90,7 +90,7 @@
     --color-accent-fg: #58a6ff;
     --color-accent-emphasis: #1f6feb;
     --color-attention-subtle: rgba(187,128,9,0.15);
-    --color-danger-fg: #c38000;
+    --color-danger-fg: #d47616;
   }
 }
 
@@ -210,7 +210,7 @@
 .markdown-body kbd,
 .markdown-body pre,
 .markdown-body samp {
-  font-family: monospace,monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -416,7 +416,8 @@
 }
 
 .markdown-body tt,
-.markdown-body code {
+.markdown-body code,
+.markdown-body samp {
   font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   font-size: 12px;
 }
@@ -573,6 +574,8 @@
 }
 
 .markdown-body g-emoji {
+  display: inline-block;
+  min-width: 1ch;
   font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1em;
   font-style: normal !important;
@@ -645,14 +648,6 @@
   margin-bottom: 0;
 }
 
-.markdown-body sup>a::before {
-  content: "[";
-}
-
-.markdown-body sup>a::after {
-  content: "]";
-}
-
 .markdown-body h1 .octicon-link,
 .markdown-body h2 .octicon-link,
 .markdown-body h3 .octicon-link,
@@ -696,6 +691,21 @@
 .markdown-body h6 code {
   padding: 0 .2em;
   font-size: inherit;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2,
+.markdown-body summary h3,
+.markdown-body summary h4,
+.markdown-body summary h5,
+.markdown-body summary h6 {
+  display: inline-block;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2 {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .markdown-body ul.no-list,
@@ -896,6 +906,10 @@
   text-decoration: inherit;
 }
 
+.markdown-body samp {
+  font-size: 85%;
+}
+
 .markdown-body pre code {
   font-size: 100%;
 }
@@ -968,6 +982,14 @@
   border-top: 0;
 }
 
+.markdown-body [data-footnote-ref]::before {
+  content: "[";
+}
+
+.markdown-body [data-footnote-ref]::after {
+  content: "]";
+}
+
 .markdown-body .footnotes {
   font-size: 12px;
   color: var(--color-fg-muted);
@@ -1015,7 +1037,7 @@
 }
 
 .markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .markdown-body .task-list-item .handle {

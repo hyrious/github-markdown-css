@@ -114,7 +114,7 @@
 .markdown-body kbd,
 .markdown-body pre,
 .markdown-body samp {
-  font-family: monospace,monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -320,7 +320,8 @@
 }
 
 .markdown-body tt,
-.markdown-body code {
+.markdown-body code,
+.markdown-body samp {
   font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   font-size: 12px;
 }
@@ -372,11 +373,11 @@
 }
 
 .markdown-body .pl-ent {
-  color: #054da9;
+  color: #0550ae;
 }
 
 .markdown-body .pl-k {
-  color: #ac5e00;
+  color: #b35900;
 }
 
 .markdown-body .pl-s,
@@ -391,26 +392,26 @@
 
 .markdown-body .pl-v,
 .markdown-body .pl-smw {
-  color: #953800;
+  color: #8a4600;
 }
 
 .markdown-body .pl-bu {
-  color: #6c3900;
+  color: #6f3800;
 }
 
 .markdown-body .pl-ii {
   color: #f6f8fa;
-  background-color: #6c3900;
+  background-color: #6f3800;
 }
 
 .markdown-body .pl-c2 {
   color: #f6f8fa;
-  background-color: #ac5e00;
+  background-color: #b35900;
 }
 
 .markdown-body .pl-sr .pl-cce {
   font-weight: bold;
-  color: #054da9;
+  color: #0550ae;
 }
 
 .markdown-body .pl-ml {
@@ -435,18 +436,18 @@
 }
 
 .markdown-body .pl-md {
-  color: #6c3900;
-  background-color: #fefe48;
+  color: #6f3800;
+  background-color: #fff5e8;
 }
 
 .markdown-body .pl-mi1 {
-  color: #054da9;
-  background-color: #c0f6ff;
+  color: #0550ae;
+  background-color: #ddf4ff;
 }
 
 .markdown-body .pl-mc {
-  color: #953800;
-  background-color: #ffd8b5;
+  color: #8a4600;
+  background-color: #ffddb0;
 }
 
 .markdown-body .pl-mi2 {
@@ -477,6 +478,8 @@
 }
 
 .markdown-body g-emoji {
+  display: inline-block;
+  min-width: 1ch;
   font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1em;
   font-style: normal !important;
@@ -515,7 +518,7 @@
 }
 
 .markdown-body .absent {
-  color: #ac5e00;
+  color: #b35900;
 }
 
 .markdown-body .anchor {
@@ -547,14 +550,6 @@
 
 .markdown-body blockquote>:last-child {
   margin-bottom: 0;
-}
-
-.markdown-body sup>a::before {
-  content: "[";
-}
-
-.markdown-body sup>a::after {
-  content: "]";
 }
 
 .markdown-body h1 .octicon-link,
@@ -600,6 +595,21 @@
 .markdown-body h6 code {
   padding: 0 .2em;
   font-size: inherit;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2,
+.markdown-body summary h3,
+.markdown-body summary h4,
+.markdown-body summary h5,
+.markdown-body summary h6 {
+  display: inline-block;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2 {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .markdown-body ul.no-list,
@@ -800,6 +810,10 @@
   text-decoration: inherit;
 }
 
+.markdown-body samp {
+  font-size: 85%;
+}
+
 .markdown-body pre code {
   font-size: 100%;
 }
@@ -872,6 +886,14 @@
   border-top: 0;
 }
 
+.markdown-body [data-footnote-ref]::before {
+  content: "[";
+}
+
+.markdown-body [data-footnote-ref]::after {
+  content: "]";
+}
+
 .markdown-body .footnotes {
   font-size: 12px;
   color: #57606a;
@@ -919,7 +941,7 @@
 }
 
 .markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .markdown-body .task-list-item .handle {
