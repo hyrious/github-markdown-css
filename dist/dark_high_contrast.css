@@ -373,150 +373,6 @@
   appearance: none;
 }
 
-.markdown-body .pl-c {
-  color: #bdc4cc;
-}
-
-.markdown-body .pl-c1,
-.markdown-body .pl-s .pl-v {
-  color: #91cbff;
-}
-
-.markdown-body .pl-e,
-.markdown-body .pl-en {
-  color: #dbb7ff;
-}
-
-.markdown-body .pl-smi,
-.markdown-body .pl-s .pl-s1 {
-  color: #f0f3f6;
-}
-
-.markdown-body .pl-ent {
-  color: #72f088;
-}
-
-.markdown-body .pl-k {
-  color: #ff9492;
-}
-
-.markdown-body .pl-s,
-.markdown-body .pl-pds,
-.markdown-body .pl-s .pl-pse .pl-s1,
-.markdown-body .pl-sr,
-.markdown-body .pl-sr .pl-cce,
-.markdown-body .pl-sr .pl-sre,
-.markdown-body .pl-sr .pl-sra {
-  color: #addcff;
-}
-
-.markdown-body .pl-v,
-.markdown-body .pl-smw {
-  color: #ffb757;
-}
-
-.markdown-body .pl-bu {
-  color: #ff6a69;
-}
-
-.markdown-body .pl-ii {
-  color: #ffffff;
-  background-color: #e82a2f;
-}
-
-.markdown-body .pl-c2 {
-  color: #ffffff;
-  background-color: #ff4445;
-}
-
-.markdown-body .pl-sr .pl-cce {
-  font-weight: bold;
-  color: #72f088;
-}
-
-.markdown-body .pl-ml {
-  color: #fbd669;
-}
-
-.markdown-body .pl-mh,
-.markdown-body .pl-mh .pl-en,
-.markdown-body .pl-ms {
-  font-weight: bold;
-  color: #409eff;
-}
-
-.markdown-body .pl-mi {
-  font-style: italic;
-  color: #f0f3f6;
-}
-
-.markdown-body .pl-mb {
-  font-weight: bold;
-  color: #f0f3f6;
-}
-
-.markdown-body .pl-md {
-  color: #ffdedb;
-  background-color: #cc1421;
-}
-
-.markdown-body .pl-mi1 {
-  color: #acf7b6;
-  background-color: #007728;
-}
-
-.markdown-body .pl-mc {
-  color: #ffe1b4;
-  background-color: #a74c00;
-}
-
-.markdown-body .pl-mi2 {
-  color: #f0f3f6;
-  background-color: #318bf8;
-}
-
-.markdown-body .pl-mdr {
-  font-weight: bold;
-  color: #dbb7ff;
-}
-
-.markdown-body .pl-ba {
-  color: #bdc4cc;
-}
-
-.markdown-body .pl-sg {
-  color: #7a828e;
-}
-
-.markdown-body .pl-corl {
-  text-decoration: underline;
-  color: #addcff;
-}
-
-.markdown-body [data-catalyst] {
-  display: block;
-}
-
-.markdown-body [data-catalyst-inline] {
-  display: inline;
-}
-
-.markdown-body g-emoji {
-  display: inline-block;
-  min-width: 1ch;
-  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1em;
-  font-style: normal !important;
-  font-weight: 400;
-  line-height: 1;
-  vertical-align: -0.075em;
-}
-
-.markdown-body g-emoji img {
-  width: 1em;
-  height: 1em;
-}
-
 .markdown-body::before {
   display: table;
   content: "";
@@ -959,6 +815,150 @@
 
 .markdown-body .footnotes .data-footnote-backref g-emoji {
   font-family: monospace;
+}
+
+.markdown-body .pl-c {
+  color: #bdc4cc;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #91cbff;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #dbb7ff;
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+  color: #f0f3f6;
+}
+
+.markdown-body .pl-ent {
+  color: #72f088;
+}
+
+.markdown-body .pl-k {
+  color: #ff9492;
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+  color: #addcff;
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+  color: #ffb757;
+}
+
+.markdown-body .pl-bu {
+  color: #ff6a69;
+}
+
+.markdown-body .pl-ii {
+  color: #ffffff;
+  background-color: #e82a2f;
+}
+
+.markdown-body .pl-c2 {
+  color: #ffffff;
+  background-color: #ff4445;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #72f088;
+}
+
+.markdown-body .pl-ml {
+  color: #fbd669;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: bold;
+  color: #409eff;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #f0f3f6;
+}
+
+.markdown-body .pl-mb {
+  font-weight: bold;
+  color: #f0f3f6;
+}
+
+.markdown-body .pl-md {
+  color: #ffdedb;
+  background-color: #cc1421;
+}
+
+.markdown-body .pl-mi1 {
+  color: #acf7b6;
+  background-color: #007728;
+}
+
+.markdown-body .pl-mc {
+  color: #ffe1b4;
+  background-color: #a74c00;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f0f3f6;
+  background-color: #318bf8;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: bold;
+  color: #dbb7ff;
+}
+
+.markdown-body .pl-ba {
+  color: #bdc4cc;
+}
+
+.markdown-body .pl-sg {
+  color: #7a828e;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #addcff;
+}
+
+.markdown-body [data-catalyst] {
+  display: block;
+}
+
+.markdown-body [data-catalyst-inline] {
+  display: inline;
+}
+
+.markdown-body g-emoji {
+  display: inline-block;
+  min-width: 1ch;
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1em;
+  font-style: normal !important;
+  font-weight: 400;
+  line-height: 1;
+  vertical-align: -0.075em;
+}
+
+.markdown-body g-emoji img {
+  width: 1em;
+  height: 1em;
 }
 
 .markdown-body [data-a11y-animated-images=system] [data-animated-image],

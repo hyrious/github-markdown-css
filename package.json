@@ -1,8 +1,7 @@
 {
-  "private": true,
   "type": "module",
   "name": "@hyrious/github-markdown-css",
-  "version": "5.0.1",
+  "version": "0.1.0",
   "scripts": {
     "make": "node make.js"
   },

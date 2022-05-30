@@ -1,5 +1,5 @@
-import githubMarkdownCss from 'generate-github-markdown-css'
 import fs from 'fs'
+import githubMarkdownCss from 'generate-github-markdown-css'
 
 fs.mkdirSync('dist', { recursive: true })
 
