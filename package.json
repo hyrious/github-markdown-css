@@ -1,7 +1,13 @@
 {
-  "type": "module",
   "name": "@hyrious/github-markdown-css",
+  "main": "github-markdown.css",
+  "type": "module",
   "version": "0.1.0",
+  "files": [
+    "github-markdown.css",
+    "make.js",
+    "dist"
+  ],
   "scripts": {
     "make": "node make.js"
   },
