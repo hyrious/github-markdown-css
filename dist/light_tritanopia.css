@@ -1,3 +1,5 @@
+/*light_tritanopia*/
+
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -565,6 +567,10 @@
   border: 1px solid #d0d7de;
 }
 
+.markdown-body table td>:last-child {
+  margin-bottom: 0;
+}
+
 .markdown-body table tr {
   background-color: #ffffff;
   border-top: 1px solid hsla(210,18%,87%,1);
@@ -731,6 +737,7 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
+  color: #24292f;
   background-color: #f6f8fa;
   border-radius: 6px;
 }
@@ -821,6 +828,24 @@
 
 .markdown-body .footnotes .data-footnote-backref g-emoji {
   font-family: monospace;
+}
+
+.markdown-body [popover] {
+  background: canvas;
+  border: solid;
+  color: canvastext;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  overflow: auto;
+  padding: .25em;
+  position: fixed;
+  width: fit-content;
+  z-index: 2147483647;
+}
+
+.markdown-body [popover][anchor] {
+  inset: auto;
 }
 
 .markdown-body .pl-c {
@@ -999,6 +1024,14 @@
   height: 24px;
   overflow: visible;
   clip: auto;
+}
+
+.markdown-body .QueryBuilder .qb-entity {
+  color: #8250df;
+}
+
+.markdown-body .QueryBuilder .qb-constant {
+  color: #0550ae;
 }
 
 .markdown-body ::-webkit-calendar-picker-indicator {

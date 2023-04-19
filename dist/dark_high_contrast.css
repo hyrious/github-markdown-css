@@ -1,3 +1,5 @@
+/*dark_high_contrast*/
+
 .markdown-body {
   color-scheme: dark;
   -ms-text-size-adjust: 100%;
@@ -566,6 +568,10 @@
   border: 1px solid #7a828e;
 }
 
+.markdown-body table td>:last-child {
+  margin-bottom: 0;
+}
+
 .markdown-body table tr {
   background-color: #0a0c10;
   border-top: 1px solid #7a828e;
@@ -732,6 +738,7 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
+  color: #f0f3f6;
   background-color: #272b33;
   border-radius: 6px;
 }
@@ -822,6 +829,24 @@
 
 .markdown-body .footnotes .data-footnote-backref g-emoji {
   font-family: monospace;
+}
+
+.markdown-body [popover] {
+  background: canvas;
+  border: solid;
+  color: canvastext;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  overflow: auto;
+  padding: .25em;
+  position: fixed;
+  width: fit-content;
+  z-index: 2147483647;
+}
+
+.markdown-body [popover][anchor] {
+  inset: auto;
 }
 
 .markdown-body .pl-c {
@@ -1000,6 +1025,14 @@
   height: 24px;
   overflow: visible;
   clip: auto;
+}
+
+.markdown-body .QueryBuilder .qb-entity {
+  color: #dbb7ff;
+}
+
+.markdown-body .QueryBuilder .qb-constant {
+  color: #91cbff;
 }
 
 .markdown-body ::-webkit-calendar-picker-indicator {
