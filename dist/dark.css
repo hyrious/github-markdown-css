@@ -501,19 +501,19 @@
   list-style-type: none;
 }
 
-.markdown-body ol[type=a] {
+.markdown-body ol[type="a s"] {
   list-style-type: lower-alpha;
 }
 
-.markdown-body ol[type=A] {
+.markdown-body ol[type="A s"] {
   list-style-type: upper-alpha;
 }
 
-.markdown-body ol[type=i] {
+.markdown-body ol[type="i s"] {
   list-style-type: lower-roman;
 }
 
-.markdown-body ol[type=I] {
+.markdown-body ol[type="I s"] {
   list-style-type: upper-roman;
 }
 
