@@ -55,6 +55,7 @@
 
 .markdown-body abbr[title] {
   border-bottom: none;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
 }
 
@@ -831,9 +832,11 @@
 }
 
 .markdown-body [popover] {
-  background: canvas;
-  border: solid;
-  color: canvastext;
+  background-color: canvas;
+  border: initial solid;
+  border-color: initial;
+  border-image: initial;
+  color: initial;
   height: fit-content;
   inset: 0;
   margin: auto;
@@ -844,7 +847,15 @@
   z-index: 2147483647;
 }
 
-.markdown-body [popover][anchor] {
+.markdown-body [popover]:not(.\:popover-open) {
+  display: none;
+}
+
+.markdown-body [popover]:is(dialog[open]) {
+  display: revert;
+}
+
+.markdown-body [anchor].\:popover-open {
   inset: auto;
 }
 
@@ -859,7 +870,7 @@
 
 .markdown-body .pl-e,
 .markdown-body .pl-en {
-  color: #622cbc;
+  color: #512598;
 }
 
 .markdown-body .pl-smi,
@@ -1027,7 +1038,7 @@
 }
 
 .markdown-body .QueryBuilder .qb-entity {
-  color: #622cbc;
+  color: #512598;
 }
 
 .markdown-body .QueryBuilder .qb-constant {

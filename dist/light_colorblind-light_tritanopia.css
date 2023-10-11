@@ -5,7 +5,7 @@
     color-scheme: light;
     --color-prettylights-syntax-comment: #6e7781;
     --color-prettylights-syntax-constant: #0550ae;
-    --color-prettylights-syntax-entity: #8250df;
+    --color-prettylights-syntax-entity: #6639ba;
     --color-prettylights-syntax-storage-modifier-import: #24292f;
     --color-prettylights-syntax-entity-tag: #0550ae;
     --color-prettylights-syntax-keyword: #cf222e;
@@ -55,7 +55,7 @@
     color-scheme: light;
     --color-prettylights-syntax-comment: #6e7781;
     --color-prettylights-syntax-constant: #0550ae;
-    --color-prettylights-syntax-entity: #8250df;
+    --color-prettylights-syntax-entity: #6639ba;
     --color-prettylights-syntax-storage-modifier-import: #24292f;
     --color-prettylights-syntax-entity-tag: #0550ae;
     --color-prettylights-syntax-keyword: #b35900;
@@ -153,6 +153,7 @@
 
 .markdown-body abbr[title] {
   border-bottom: none;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
 }
 
@@ -929,9 +930,11 @@
 }
 
 .markdown-body [popover] {
-  background: canvas;
-  border: solid;
-  color: canvastext;
+  background-color: canvas;
+  border: initial solid;
+  border-color: initial;
+  border-image: initial;
+  color: initial;
   height: fit-content;
   inset: 0;
   margin: auto;
@@ -942,7 +945,15 @@
   z-index: 2147483647;
 }
 
-.markdown-body [popover][anchor] {
+.markdown-body [popover]:not(.\:popover-open) {
+  display: none;
+}
+
+.markdown-body [popover]:is(dialog[open]) {
+  display: revert;
+}
+
+.markdown-body [anchor].\:popover-open {
   inset: auto;
 }
 
