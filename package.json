@@ -12,6 +12,6 @@
     "make": "node make.js"
   },
   "devDependencies": {
-    "generate-github-markdown-css": "^6.0.1"
+    "generate-github-markdown-css": "^6.1.0"
   }
 }
