@@ -52,6 +52,11 @@
     --color-danger-emphasis: #ff6a69;
     --color-done-fg: #b780ff;
     --color-done-emphasis: #b87fff;
+    --base-size-8: 8px;
+    --base-size-16: 16px;
+    --base-text-weight-normal: 400;
+    --base-text-weight-medium: 500;
+    --base-text-weight-semibold: 600;
   }
 }
 
@@ -109,6 +114,11 @@
     --color-danger-emphasis: #a0111f;
     --color-done-fg: #622cbc;
     --color-done-emphasis: #622cbc;
+    --base-size-8: 8px;
+    --base-size-16: 16px;
+    --base-text-weight-normal: 400;
+    --base-text-weight-medium: 500;
+    --base-text-weight-semibold: 600;
   }
 }
 
