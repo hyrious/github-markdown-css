@@ -5,12 +5,13 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   margin: 0;
-  color: #f0f3f6;
+  color: #fbfcfd;
   background-color: #0a0c10;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
+  scroll-behavior: auto;
 }
 
 .markdown-body .octicon {
@@ -50,7 +51,7 @@
 
 .markdown-body a {
   background-color: transparent;
-  color: #71b7ff;
+  color: #60aeff;
   text-decoration: none;
 }
 
@@ -78,8 +79,8 @@
 }
 
 .markdown-body mark {
-  background-color: rgba(224,155,19,0.15);
-  color: #f0f3f6;
+  background-color: #edaa2726;
+  color: #fbfcfd;
 }
 
 .markdown-body small {
@@ -182,7 +183,7 @@
 }
 
 .markdown-body ::placeholder {
-  color: #9ea7b3;
+  color: #f0f3f6;
   opacity: 1;
 }
 
@@ -216,14 +217,14 @@
 }
 
 .markdown-body details:not([open])>*:not(summary) {
-  display: none !important;
+  display: none;
 }
 
 .markdown-body a:focus,
 .markdown-body [role=button]:focus,
 .markdown-body input[type=radio]:focus,
 .markdown-body input[type=checkbox]:focus {
-  outline: 2px solid #71b7ff;
+  outline: 2px solid #409eff;
   outline-offset: -2px;
   box-shadow: none;
 }
@@ -239,7 +240,7 @@
 .markdown-body [role=button]:focus-visible,
 .markdown-body input[type=radio]:focus-visible,
 .markdown-body input[type=checkbox]:focus-visible {
-  outline: 2px solid #71b7ff;
+  outline: 2px solid #409eff;
   outline-offset: -2px;
   box-shadow: none;
 }
@@ -256,15 +257,15 @@
 .markdown-body kbd {
   display: inline-block;
   padding: 3px 5px;
-  font: 11px var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+  font: 11px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   line-height: 10px;
-  color: #f0f3f6;
+  color: #fbfcfd;
   vertical-align: middle;
   background-color: #272b33;
-  border: solid 1px rgba(158,167,179,0.4);
-  border-bottom-color: rgba(158,167,179,0.4);
+  border: solid 1px #9ea7b3;
+  border-bottom-color: #9ea7b3;
   border-radius: 6px;
-  box-shadow: inset 0 -1px 0 rgba(158,167,179,0.4);
+  box-shadow: inset 0 -1px 0 #9ea7b3;
 }
 
 .markdown-body h1,
@@ -345,14 +346,14 @@
 .markdown-body tt,
 .markdown-body code,
 .markdown-body samp {
-  font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   font-size: 12px;
   word-wrap: normal;
 }
@@ -372,7 +373,7 @@
 }
 
 .markdown-body .mr-2 {
-  margin-right: 8px !important;
+  margin-right: 0.5rem !important;
 }
 
 .markdown-body::before {
@@ -400,7 +401,7 @@
 }
 
 .markdown-body .absent {
-  color: #ff6a69;
+  color: #ff8080;
 }
 
 .markdown-body .anchor {
@@ -440,7 +441,7 @@
 .markdown-body h4 .octicon-link,
 .markdown-body h5 .octicon-link,
 .markdown-body h6 .octicon-link {
-  color: #f0f3f6;
+  color: #fbfcfd;
   vertical-align: middle;
   visibility: hidden;
 }
@@ -631,7 +632,7 @@
   display: block;
   padding: 5px 0 0;
   clear: both;
-  color: #f0f3f6;
+  color: #fbfcfd;
 }
 
 .markdown-body span.align-center {
@@ -701,7 +702,7 @@
   margin: 0;
   font-size: 85%;
   white-space: break-spaces;
-  background-color: rgba(158,167,179,0.4);
+  background-color: #9ea7b366;
   border-radius: 6px;
 }
 
@@ -746,7 +747,7 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  color: #f0f3f6;
+  color: #fbfcfd;
   background-color: #272b33;
   border-radius: 6px;
 }
@@ -832,7 +833,7 @@
 }
 
 .markdown-body .footnotes li:target {
-  color: #f0f3f6;
+  color: #fbfcfd;
 }
 
 .markdown-body .footnotes .data-footnote-backref g-emoji {
@@ -882,7 +883,7 @@
 }
 
 .markdown-body .pl-bu {
-  color: #ff6a69;
+  color: #ff8080;
 }
 
 .markdown-body .pl-ii {
@@ -959,6 +960,20 @@
   color: #addcff;
 }
 
+.markdown-body [role=button]:focus:not(:focus-visible),
+.markdown-body [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),
+.markdown-body button:focus:not(:focus-visible),
+.markdown-body summary:focus:not(:focus-visible),
+.markdown-body a:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.markdown-body [tabindex="0"]:focus:not(:focus-visible),
+.markdown-body details-dialog:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .markdown-body g-emoji {
   display: inline-block;
   min-width: 1ch;
@@ -988,7 +1003,7 @@
 }
 
 .markdown-body .task-list-item+.task-list-item {
-  margin-top: 4px;
+  margin-top: 0.25rem;
 }
 
 .markdown-body .task-list-item .handle {
@@ -1022,8 +1037,8 @@
 }
 
 .markdown-body .markdown-alert {
-  padding: 8px 16px;
-  margin-bottom: 16px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
   color: inherit;
   border-left: .25em solid #7a828e;
 }
@@ -1048,7 +1063,7 @@
 }
 
 .markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: #71b7ff;
+  color: #60aeff;
 }
 
 .markdown-body .markdown-alert.markdown-alert-important {
@@ -1056,7 +1071,7 @@
 }
 
 .markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: #b780ff;
+  color: #bf8fff;
 }
 
 .markdown-body .markdown-alert.markdown-alert-warning {
@@ -1072,7 +1087,7 @@
 }
 
 .markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: #26cd4d;
+  color: #28d751;
 }
 
 .markdown-body .markdown-alert.markdown-alert-caution {
@@ -1080,7 +1095,7 @@
 }
 
 .markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: #ff6a69;
+  color: #ff8080;
 }
 
 .markdown-body>*:first-child>.heading-element:first-child {
