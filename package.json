@@ -2,7 +2,7 @@
   "name": "@hyrious/github-markdown-css",
   "main": "github-markdown.css",
   "type": "module",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "files": [
     "github-markdown.css",
     "make.js",
